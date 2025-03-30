@@ -1,0 +1,8 @@
+[submodule "Xenos"]
+	path = Xenos
+	url = https://github.com/DarthTon/Xenos.git
+	branch = master
+[submodule "minhook"]
+    path = minhook
+    url = https://github.com/TsudaKageyu/minhook.git
+    branch = master
