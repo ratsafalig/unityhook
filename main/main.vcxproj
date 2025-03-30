@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\minhook\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\minhook\include;$(ProjectDir)..\Xenos\ext\blackbone\src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ProjectDir)..\Xenos\ext\blackbone\build\x64\Debug;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ReferencePath)</ReferencePath>
     <AllProjectBMIsArePublic>true</AllProjectBMIsArePublic>
   </PropertyGroup>
@@ -110,12 +110,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>BlackBone.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
