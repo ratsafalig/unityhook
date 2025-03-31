@@ -12,8 +12,8 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    
+    auto all = blackbone::Process::EnumByNameOrPID(0, L"");
+
     return 0;
 }
 
