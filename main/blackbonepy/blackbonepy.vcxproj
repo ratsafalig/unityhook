@@ -71,9 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ReferencePath>$(ReferencePath)</ReferencePath>
-    <IncludePath>C:\Boost\include\boost-1_88;D:\Users\LP\Desktop\unityhook\python\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Anaconda\Anaconda3\include</IncludePath>
-    <LibraryPath>C:\Boost\lib;D:\Anaconda\Anaconda3\libs;D:\Users\LP\Desktop\unityhook\python\Debug;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ProjectDir)..\..\minhook\Build\VC17\bin\Debug;$(ReferencePath)</ReferencePath>
+    <IncludePath>$(ProjectDir)..\..\minhook\include;$(ProjectDir)..\..\Xenos\ext\blackbone\src;C:\Boost\include\boost-1_88;D:\Anaconda\Anaconda3\include;D:\Users\LP\Desktop\unityhook\python\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)..\</IncludePath>
+    <LibraryPath>C:\Boost\lib;D:\Anaconda\Anaconda3\libs;D:\Users\LP\Desktop\unityhook\python\Debug;D:\Users\LP\Desktop\unityhook\main\..\minhook\Build\VC17\bin\Debug;D:\Users\LP\Desktop\unityhook\main\..\Xenos\ext\blackbone\build\x64\Debug;D:\Users\LP\Desktop\unityhook\Xenos\build\x64\Debug;D:\Users\LP\Desktop\unityhook\Xenos\ext\blackbone\build\x64\Debug;$(LibraryPath)</LibraryPath>
+    <AllProjectBMIsArePublic>true</AllProjectBMIsArePublic>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,11 +110,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>BlackBone.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>python D:\Users\LP\Desktop\unityhook\main\build.py</Command>

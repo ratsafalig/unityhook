@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "main", "main.vcxproj", "{D67E991B-8B1C-4DA6-BDEF-340409B1CF8C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "blackbonepy", ".\blackbonepy\blackbonepy.vcxproj", "{F1B7A49E-0BF3-4A7F-8040-762D3C8C8DEC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "blackbonepy", "blackbonepy\blackbonepy.vcxproj", "{F1B7A49E-0BF3-4A7F-8040-762D3C8C8DEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

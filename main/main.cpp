@@ -8,5 +8,13 @@ using namespace blackbone;
 
 int main( int /*argc*/, char* /*argv[]*/ )
 {
-    return 0;
+    asmjit::X86RegData a;
+    // List all process PIDs matching name
+    auto pids = Process::EnumByName(L"explorer.exe");
+
+    // List all process PIDs matching either by PID only
+    auto procInfo = Process::EnumByNameOrPID(0x1234, L"");
+
+    // List all processes
+    auto all = Process::EnumByNameOrPID(0, L"");
 }
