@@ -1,3 +1,8 @@
 import blackbonepy
 
-print(blackbonepy.greet())
+r = blackbonepy.EnumByName("msedge.exe")
+
+for i in r:
+    print(i)
+
+print("hello world")

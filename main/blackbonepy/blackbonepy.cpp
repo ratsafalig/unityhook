@@ -6,30 +6,19 @@
 #include <BlackBone/Syscalls/Syscall.h>
 
 #include "stdlib.h"
+#include "iostream"
 
-#include <boost/python.hpp>
+#include "pybind11/pybind11.h"
+#include <pybind11/stl.h>
 
-//std::vector<char*> test() {
-//	std::vector<char*> result;
-//	char* str = (char*)malloc(100);
-//	strcpy(str, "hello");
-//	result.push_back(str);
-//	return result;
-//}
-
-char const* greet()
+std::vector<DWORD> EnumByName(const wchar_t * name)
 {
-    return "greeting, hello";
+    auto pids = blackbone::Process::EnumByName(name);
+
+    return pids;
 };
 
-BOOST_PYTHON_MODULE(blackbonepy)
+PYBIND11_MODULE(blackbonepy, m)
 {
-    asmjit::X86RegData a;
-    using namespace boost::python;
-    def("greet", greet);
-	//def("test", test);
-}
-
-int main() {
-    return 0;
+    m.def("EnumByName", &EnumByName);
 }

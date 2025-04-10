@@ -1,0 +1,10 @@
+CMakeFiles/
+x64/
+Debug/
+
+*.exe
+*.pdb
+.vs/
+
+il2cpp/
+faber/
