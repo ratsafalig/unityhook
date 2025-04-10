@@ -1,8 +1,8 @@
 # Unity Hook
 
-unity il2cpp hook python library, build on minhook and blackbone
+Unity il2cpp hook python library, build on minhook and blackbone.
 
-# example
+# Example
 
 ```python
 import blackbonepy
