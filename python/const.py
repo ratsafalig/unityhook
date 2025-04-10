@@ -23,3 +23,12 @@ DEFAULT_ACCESS_P = \
     PROCESS_TERMINATE | \
     PROCESS_SUSPEND_RESUME | \
     PROCESS_DUP_HANDLE
+
+eModType_mt_mod32 = 0  
+eModType_mt_mod64 = 1  
+eModType_mt_default = 2 
+eModType_mt_unknown = 3
+
+eModSeachType_LdrList = 0
+eModSeachType_Sections = 1
+eModSeachType_PEHeaders = 2
