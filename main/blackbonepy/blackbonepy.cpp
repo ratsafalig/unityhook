@@ -11,14 +11,12 @@
 #include "pybind11/pybind11.h"
 #include <pybind11/stl.h>
 
-std::vector<DWORD> EnumByName(const wchar_t * name)
-{
-    auto pids = blackbone::Process::EnumByName(name);
+namespace py = pybind11;
 
-    return pids;
-};
-
-PYBIND11_MODULE(blackbonepy, m)
-{
-    m.def("EnumByName", &EnumByName);
+PYBIND11_MODULE(blackbonepy, m)  
+{  
+    py::class_<blackbone::Process>(m, "Process")
+        .def(py::init<>())
+        .def("Attach", py::overload_cast<DWORD, DWORD>(&blackbone::Process::Attach))
+        .def("EnumByName", &blackbone::Process::EnumByName);
 }
