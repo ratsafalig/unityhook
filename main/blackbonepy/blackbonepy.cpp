@@ -21,7 +21,16 @@ PYBIND11_MODULE(blackbonepy, m)
         .value("mt_default", blackbone::eModType::mt_default)
         .value("mt_unknown", blackbone::eModType::mt_unknown);
 
+    py::enum_<blackbone::eModSeachType>(m, "eModSeachType")
+        .value("LdrList", blackbone::eModSeachType::LdrList)
+        .value("PEHeaders", blackbone::eModSeachType::PEHeaders)
+        .value("Sections", blackbone::eModSeachType::Sections);
+
+    py::class_<blackbone::ModuleDataPtr>(m, "ModuleDataPtr");
+
     py::class_<blackbone::ModuleData>(m, "ModuleData");
+
+    py::class_<blackbone::ProcessModules::mapModules>(m, "mapModules");
 
     py::class_<blackbone::Process>(m, "Process")
         .def(py::init<>())
@@ -32,8 +41,8 @@ PYBIND11_MODULE(blackbonepy, m)
         .def("modules", &blackbone::Process::modules, py::return_value_policy::reference);
 
     py::class_<blackbone::ProcessModules>(m, "ProcessModules")
-        //.def("GetAllModules", &blackbone::ProcessModules::GetAllModules);
-        .def("GetAllModules", [](blackbone::ProcessModules &self) { 
-            return self.GetAllModules();
-        }, py::return_value_policy::reference);
+        .def("GetAllModules", [](blackbone::ProcessModules & self) {
+        auto result = self.GetAllModules();
+        return result;
+    }, py::return_value_policy::automatic);
 }

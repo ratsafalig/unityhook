@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ReferencePath>$(ProjectDir)..\..\minhook\Build\VC17\bin\Debug;$(ReferencePath)</ReferencePath>
-    <IncludePath>$(ProjectDir)..\..\Xenos\ext\blackbone\src;$(ProjectDir)..\..\minhook\include;C:\Boost\include\boost-1_88;D:\Anaconda\Anaconda3\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Users\LP\Desktop\unityhook\pybind11\include;$(ProjectDir)..\</IncludePath>
-    <LibraryPath>C:\Boost\lib;D:\Anaconda\Anaconda3\libs;D:\Users\LP\Desktop\unityhook\python\Debug;D:\Users\LP\Desktop\unityhook\main\..\minhook\Build\VC17\bin\Debug;D:\Users\LP\Desktop\unityhook\main\..\Xenos\ext\blackbone\build\x64\Debug;D:\Users\LP\Desktop\unityhook\Xenos\build\x64\Debug;D:\Users\LP\Desktop\unityhook\Xenos\ext\blackbone\build\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\..\blackbone\src;$(ProjectDir)..\..\minhook\include;C:\Boost\include\boost-1_88;D:\Anaconda\Anaconda3\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Users\LP\Desktop\unityhook\pybind11\include;$(ProjectDir)..\</IncludePath>
+    <LibraryPath>C:\Boost\lib;D:\Anaconda\Anaconda3\libs;D:\Users\LP\Desktop\unityhook\python\Debug;$(ProjectDir)..\..\minhook\Build\VC17\bin\Debug;$(ProjectDir)..\..\blackbone\build\x64\Debug;$(LibraryPath)</LibraryPath>
     <AllProjectBMIsArePublic>true</AllProjectBMIsArePublic>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -118,7 +118,7 @@
       <AdditionalDependencies>BlackBone.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>D:\IDA\Python\python.exe D:\Users\LP\Desktop\unityhook\main\build.py</Command>
+      <Command>D:\Anaconda\conda\python.exe D:\Users\LP\Desktop\unityhook\main\build.py</Command>
       <Message>python build</Message>
     </PostBuildEvent>
     <CustomBuildStep>
