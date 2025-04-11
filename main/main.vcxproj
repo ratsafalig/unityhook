@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\minhook\include;$(ProjectDir)..\Xenos\ext\blackbone\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ProjectDir)..\Xenos\ext\blackbone\build\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\minhook\include;$(ProjectDir)..\blackbone\src;D:/Anaconda/conda/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ProjectDir)..\blackbone\build\x64\Debug;D:/Anaconda/conda/libs;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ReferencePath)</ReferencePath>
     <AllProjectBMIsArePublic>true</AllProjectBMIsArePublic>
   </PropertyGroup>

@@ -2,19 +2,37 @@
 #include <BlackBone/Patterns/PatternSearch.h>
 #include <BlackBone/Process/RPC/RemoteFunction.hpp>
 #include <BlackBone/Syscalls/Syscall.h>
+
 #include <iostream>
+#include "fstream"
+
+#include "Python.h"
 
 using namespace blackbone;
 
 int main( int /*argc*/, char* /*argv[]*/ )
 {
-    asmjit::X86RegData a;
-    // List all process PIDs matching name
-    auto pids = Process::EnumByName(L"explorer.exe");
+    Py_InitializeEx(0);
 
-    // List all process PIDs matching either by PID only
-    auto procInfo = Process::EnumByNameOrPID(0x1234, L"");
+	std::ifstream file("D:\\Users\\LP\\Desktop\\unityhook\\python\\test.py");
 
-    // List all processes
-    auto all = Process::EnumByNameOrPID(0, L"");
+    // Get the size of the file
+    file.seekg(0, std::ios::end);
+    std::streampos fileSize = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    // Read the file content into a string
+    std::string content;
+    content.resize(fileSize);
+    file.read(&content[0], fileSize);
+
+    // Close the file
+    file.close();
+
+    // Access the content as a const char*
+    const char* utf8Content = content.c_str();
+
+    PyRun_SimpleString(utf8Content);
+
+    Py_FinalizeEx(); 
 }

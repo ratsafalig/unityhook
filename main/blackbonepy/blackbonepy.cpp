@@ -28,7 +28,7 @@ PYBIND11_MODULE(blackbonepy, m)
 
     py::class_<blackbone::ModuleDataPtr>(m, "ModuleDataPtr");
 
-    py::class_<blackbone::ModuleData>(m, "ModuleData");
+    py::class_<blackbone::ModuleData, std::shared_ptr<blackbone::ModuleData>>(m, "ModuleData");
 
     py::class_<blackbone::ProcessModules::mapModules>(m, "mapModules");
 
@@ -41,8 +41,6 @@ PYBIND11_MODULE(blackbonepy, m)
         .def("modules", &blackbone::Process::modules, py::return_value_policy::reference);
 
     py::class_<blackbone::ProcessModules>(m, "ProcessModules")
-        .def("GetAllModules", [](blackbone::ProcessModules & self) {
-        auto result = self.GetAllModules();
-        return result;
-    }, py::return_value_policy::automatic);
+        .def("GetAllModules", &blackbone::ProcessModules::GetAllModules)
+        .def("GetMainModule", &blackbone::ProcessModules::GetMainModule);
 }
