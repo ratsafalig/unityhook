@@ -1,9 +1,9 @@
 import blackbonepy
 import const
 import pefile
+import time
 
 # r = blackbonepy.Process.EnumByName("powershell.exe")
-
 r = blackbonepy.Process.EnumByName("LuckyHunter.exe")
 
 dll_path = "d:/steam/steamapps/common/luckyhunter/luckyhunterwindows/gameassembly.dll"
@@ -28,8 +28,15 @@ def get_export():
 
         modules = p.modules()
 
-        rr = modules.GetExport("GameAssembly.dll", "mono_type_size")
+        rr = modules.GetExport("GameAssembly.dll", "il2cpp_stop_gc_world")
 
-        rr = modules.GetAllModules(blackbonepy.eModSeachType.LdrList)
+        blackbonepy.il2cpp_stop_gc_world(p)
+        
+        time.sleep(10)
+
+        blackbonepy.il2cpp_start_gc_world(p)
+
+        pass
+
 
 get_export()

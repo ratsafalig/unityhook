@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ReferencePath>$(ProjectDir)..\..\minhook\Build\VC17\bin\Debug;$(ReferencePath)</ReferencePath>
-    <IncludePath>$(ProjectDir)..\..\blackbone\src;$(ProjectDir)..\..\minhook\include;C:\Boost\include\boost-1_88;D:\Anaconda\Anaconda3\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Users\LP\Desktop\unityhook\pybind11\include;$(ProjectDir)..\</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\blackbone\src;$(ProjectDir)..\..\minhook\include;C:\Boost\include\boost-1_88;D:\Anaconda\Anaconda3\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Users\LP\Desktop\unityhook\pybind11\include;$(ProjectDir)..\;$(ProjectDir)..\..\il2cpp\libil2cpp;$(ProjectDir)..\..\il2cpp\libmono</IncludePath>
     <LibraryPath>C:\Boost\lib;D:\Anaconda\Anaconda3\libs;D:\Users\LP\Desktop\unityhook\python\Debug;$(ProjectDir)..\..\minhook\Build\VC17\bin\Debug;$(ProjectDir)..\..\blackbone\build\x64\Debug;$(LibraryPath)</LibraryPath>
     <AllProjectBMIsArePublic>true</AllProjectBMIsArePublic>
   </PropertyGroup>

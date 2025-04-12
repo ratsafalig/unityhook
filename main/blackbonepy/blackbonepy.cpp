@@ -11,7 +11,14 @@
 #include "pybind11/pybind11.h"
 #include <pybind11/stl.h>
 
+#include "il2cpp-config.h"
+#include "il2cpp-api.h"
+#include "il2cpp-api-types.h"
+#include "il2cpp-class-internals.h"
+
 namespace py = pybind11;
+
+typedef int (*A)(HWND a, LPCWSTR b, LPCWSTR c, UINT d);
 
 PYBIND11_MODULE(blackbonepy, m)  
 {  
@@ -57,4 +64,31 @@ PYBIND11_MODULE(blackbonepy, m)
         .def_readwrite("procAddress", &blackbone::exportData::procAddress)
         .def_readwrite("forwardOrdinal", &blackbone::exportData::forwardOrdinal)
         .def_readwrite("forwardByOrd", &blackbone::exportData::forwardByOrd);
+
+    py::class_<Il2CppImage>(m, "Il2CppImage")
+        .def_readwrite("name", &Il2CppImage::name);
+
+    m.def("il2cpp_get_corlib", [](blackbone::Process & target) {
+        if (auto func = blackbone::MakeRemoteFunction<decltype(&il2cpp_get_corlib)>(target, L"GameAssembly.dll", "il2cpp_get_corlib"))
+        {
+            auto result = func().result();
+            return result;
+        }
+    });
+
+    m.def("il2cpp_stop_gc_world", [](blackbone::Process& target) {
+        if (auto func = blackbone::MakeRemoteFunction<decltype(&il2cpp_stop_gc_world)>(target, L"GameAssembly.dll", "il2cpp_stop_gc_world"))
+        {
+            auto result = func().result();
+            return result;
+        }
+    });
+
+    m.def("il2cpp_start_gc_world", [](blackbone::Process& target) {
+        if (auto func = blackbone::MakeRemoteFunction<decltype(&il2cpp_start_gc_world)>(target, L"GameAssembly.dll", "il2cpp_start_gc_world"))
+        {
+            auto result = func().result();
+            return result;
+        }
+    });
 }
