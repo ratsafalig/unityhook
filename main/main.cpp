@@ -8,31 +8,38 @@
 
 #include "Python.h"
 
+#include "il2cpp-config.h"
+#include "il2cpp-api.h"
+#include "il2cpp-api-types.h"
+#include "il2cpp-class-internals.h"
+
 using namespace blackbone;
 
 int main( int /*argc*/, char* /*argv[]*/ )
 {
-    Py_InitializeEx(0);
+	auto processes = Process::EnumByName(L"Tariff.exe");
+	
+	for (int i = 0; i < processes.size(); i++) {
+		
+		Process self;
 
-	std::ifstream file("D:\\Users\\LP\\Desktop\\unityhook\\python\\test.py");
+		self.Attach(processes[i]);
 
-    // Get the size of the file
-    file.seekg(0, std::ios::end);
-    std::streampos fileSize = file.tellg();
-    file.seekg(0, std::ios::beg);
+		if (auto func = blackbone::MakeRemoteFunction<decltype(&il2cpp_domain_get)>(self, L"GameAssembly.dll", "il2cpp_domain_get"))
+		{
+			std::cout << "il2cpp_domain_get start" << std::endl;
+			auto result = func();
 
-    // Read the file content into a string
-    std::string content;
-    content.resize(fileSize);
-    file.read(&content[0], fileSize);
+			auto val = result.result();
 
-    // Close the file
-    file.close();
+			char charArray[10];
 
-    // Access the content as a const char*
-    const char* utf8Content = content.c_str();
+			// Copy the contents of the const char* to the char array
+			strncpy(charArray, val->friendly_name, sizeof(charArray) - 1);
 
-    PyRun_SimpleString(utf8Content);
+			std::cout << "il2cpp_domain_get end " << charArray << std::endl;
+		}
 
-    Py_FinalizeEx(); 
+		return 0;
+	}
 }

@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\minhook\include;$(ProjectDir)..\blackbone\src;D:/Anaconda/conda/include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\minhook\include;$(ProjectDir)..\blackbone\src;D:/Anaconda/conda/include;$(ProjectDir)..\il2cpp\libil2cpp;$(ProjectDir)..\il2cpp\libmono;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ProjectDir)..\blackbone\build\x64\Debug;D:/Anaconda/conda/libs;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ProjectDir)..\minhook\Build\VC17\bin\Debug;$(ReferencePath)</ReferencePath>
     <AllProjectBMIsArePublic>true</AllProjectBMIsArePublic>
@@ -108,7 +108,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

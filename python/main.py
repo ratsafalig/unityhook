@@ -1,12 +1,12 @@
 import blackbonepy
-import const
 import pefile
 import time
-
-# r = blackbonepy.Process.EnumByName("powershell.exe")
-r = blackbonepy.Process.EnumByName("LuckyHunter.exe")
+import sys
 
 dll_path = "d:/steam/steamapps/common/luckyhunter/luckyhunterwindows/gameassembly.dll"
+
+# f = open('./log.txt', 'w+', encoding='utf8')
+# sys.stdout = f
 
 def get_all_exports(dll_path):
     pe = pefile.PE(dll_path)
@@ -20,23 +20,59 @@ def get_all_exports(dll_path):
 
 # get_all_exports(dll_path)
 
-def get_export():
-    for i in r:
+def handle(p):
+    pass
+    modules = p.modules()
+
+    # mainThread = p.threads().getMain()
+
+    # mainThread.Suspend()
+
+    # export = modules.GetExport("GameAssembly.dll", "il2cpp_domain_get")
+    
+    # blackbonepy.il2cpp_stop_gc_world(p)
+
+    # time.sleep(1)
+
+    # r = blackbonepy.il2cpp_get_corlib(p)
+
+    r = blackbonepy.il2cpp_domain_get(p)
+
+    # r = blackbonepy.il2cpp_stats_dump_to_file(p, "D:/Users/LP/Desktop/unityhook/dump.txt")
+
+    # time.sleep(1)
+    
+    # blackbonepy.il2cpp_start_gc_world(p)
+
+    pass
+
+
+def attach():
+    # game = blackbonepy.Process.EnumByName("LuckyHunter.exe")
+
+    # game = blackbonepy.Process.EnumByName("Discord.exe")
+
+    game = blackbonepy.Process.EnumByName("Tariff.exe")
+
+    # game = blackbonepy.Process.EnumByName("powershell.exe")
+
+    for i in game:
         p = blackbonepy.Process()
 
-        result = p.Attach(i, const.DEFAULT_ACCESS_P)
+        p.Attach(i)
 
-        modules = p.modules()
+        handle(p)
 
-        rr = modules.GetExport("GameAssembly.dll", "il2cpp_stop_gc_world")
+        return
 
-        blackbonepy.il2cpp_stop_gc_world(p)
-        
-        time.sleep(10)
+def create_and_attach():
+    p = blackbonepy.Process()
 
-        blackbonepy.il2cpp_start_gc_world(p)
+    p.CreateAndAttach('D:/Steam/steamapps/common/LuckyHunter/LuckyHunterWindows/LuckyHunter.exe')
 
-        pass
+    handle(p)
 
+    pass
 
-get_export()
+attach()
+# create_and_attach()
